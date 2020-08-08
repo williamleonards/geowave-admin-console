@@ -1,0 +1,57 @@
+@import "../styles/constants";
+
+@backgroundColor: fade(@COLOR_RED, 80%);
+@stacktraceBackgroundColor: fade(black, 40%);
+@zIndex: @TITLEBAR_Z_INDEX + 1;
+
+.root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: @zIndex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: @backgroundColor;
+    color: white;
+    font-size: 16px;
+}
+
+.heading,
+.description,
+.controls {
+    width: 50%;
+    min-width: 400px;
+    max-width: 600px;
+}
+
+.heading {
+    font-size: 2em;
+    font-weight: 200;
+}
+
+.description {
+    margin-bottom: 1em;
+}
+
+.stacktrace {
+    max-height: 30vh;
+    width: 100%;
+    padding: @SPACING;
+    overflow: auto;
+    background-color: @stacktraceBackgroundColor;
+    font-size: 13px;
+}
+
+.dismissButton {
+    background-color: white;
+    border-color: #f0f0f0;
+    color: black;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+}

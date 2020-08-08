@@ -1,0 +1,70 @@
+@import "../../styles/constants";
+
+@activeColor: @COLOR_BLUE;
+@trackColor: @COLOR_SILVER;
+@borderColor: lighten(@COLOR_GREY, 25%);
+
+.root {
+    position: relative;
+    display: flex;
+    justify-content: stretch;
+    border: 2px solid @borderColor;
+    border-radius: .3em;
+    overflow: hidden;
+    outline: none;
+    background-color: white;
+    color: @borderColor;
+    cursor: pointer;
+
+    &:focus {
+        border-color: @activeColor;
+        color: @activeColor;
+        box-shadow: 0 0 0 5px fade(@activeColor, 15%);
+    }
+
+    &.isDisabled {
+        background-color: lighten(@trackColor, 15%);
+        border-color: fade(@borderColor, 40%);
+        color: fade(@borderColor, 40%);
+        cursor: not-allowed;
+    }
+
+    &.isDisabled:focus {
+        box-shadow: 0 0 0 5px fade(@borderColor, 15%);
+    }
+}
+
+.item {
+    flex: 1;
+    padding: .2em;
+    text-align: center;
+
+    & + & {
+        border-left: 1px solid fade(@borderColor, 20%);
+    }
+
+    &.isSelected {
+        background-color: @borderColor;
+        color: white;
+        text-shadow: 1px 1px fade(black, 12%);
+    }
+
+    .root:focus & + & {
+        border-left-color: fade(@activeColor, 20%);
+    }
+
+    .root:focus &.isSelected {
+        background-color: @activeColor;
+        border-left-color: @activeColor;
+    }
+
+    .isDisabled &.isSelected,
+    .isDisabled:focus &.isSelected {
+        background-color: fade(@borderColor, 40%);
+    }
+
+    .isDisabled & + &,
+    .isDisabled:focus & + & {
+        border-left-color: fade(@borderColor, 20%);
+    }
+}

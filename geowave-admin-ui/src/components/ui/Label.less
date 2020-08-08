@@ -1,0 +1,41 @@
+@import "../../styles/constants";
+
+@textColor: black;
+@fontFamily: @FONT_LABEL;
+@fontSize: 1rem;
+
+.root {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: @textColor;
+
+    & + & {
+        margin-top: .5em;
+    }
+
+    &.isPassive {
+        cursor: default;
+    }
+}
+
+.text {
+    min-width: 8em;
+    text-align: right;
+    margin-right: .5em;
+
+    .isReversed & {
+        text-align: left;
+        margin-left: .5em;
+        margin-right: 0;
+    }
+
+    .isLarge & {
+        font-size: @fontSize * 2;
+    }
+
+    .isSmall & {
+        font-size: @fontSize * .95;
+        color: lighten(@textColor, 50%);
+    }
+}

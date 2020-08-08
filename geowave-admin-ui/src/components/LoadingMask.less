@@ -1,0 +1,81 @@
+@import "../styles/constants";
+
+@animationCurve: linear;
+@animationDuration: 1s;
+@backgroundColor: fade(@THEME_PRIMARY_DARK, 75%);
+@brightBackgroundColor: fade(@THEME_PRIMARY_DARK, 10%);
+@brightForegroundColor: @backgroundColor;
+
+.root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: @backgroundColor;
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+    font-size: 30px;
+    color: white;
+    cursor: wait;
+
+    &.isActive {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    &.isBright {
+        background-color: @brightBackgroundColor;
+        color: @brightForegroundColor;
+    }
+}
+
+.container {
+    max-width: 500px;
+    border-radius: @BORDER_RADIUS;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.globe {
+    font-size: 2.5em;
+    fill: currentColor;
+
+    .isSmall & {
+        font-size: 2em;
+    }
+}
+
+.hexagon {
+    animation: hexagon-blink @animationDuration infinite @animationCurve;
+    opacity: .2;
+
+    @_delay: (@animationDuration / 12);
+
+    &:nth-child(5n+1) { animation-delay: @_delay * 1; }
+    &:nth-child(5n+2) { animation-delay: @_delay * 2; }
+    &:nth-child(5n+3) { animation-delay: @_delay * 3; }
+    &:nth-child(5n+4) { animation-delay: @_delay * 4; }
+
+    @keyframes hexagon-blink {
+        0% { opacity: .2; }
+        100% { opacity: 1; }
+    }
+}
+
+.caption {
+    margin-top: .25em;
+    font-weight: 200;
+
+    .isSmall & {
+        display: none;
+    }
+}

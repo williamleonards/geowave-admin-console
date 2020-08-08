@@ -1,0 +1,74 @@
+@import "../../styles/constants";
+
+@activeColor: @COLOR_BLUE;
+@disabledColor: darken(@COLOR_SILVER, 15%);
+
+.root {
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 3px;
+    border-radius: @BORDER_RADIUS;
+    font-size: 16px;
+    outline: none;
+
+    &.isDisabled {
+        color: @disabledColor;
+        cursor: not-allowed;
+    }
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    border-radius: @BORDER_RADIUS;
+
+    & + & {
+        margin-left: 3px;
+    }
+
+    &:hover {
+        background-color: fade(@activeColor, 15%);
+        color: @activeColor;
+    }
+
+    .root.isDisabled &,
+    &.isDisabled {
+        cursor: not-allowed;
+        background-color: transparent;
+        color: @disabledColor;
+    }
+
+    &.isActive {
+        background-color: @activeColor;
+        color: white;
+        font-weight: bold;
+    }
+
+    .root.isDisabled &.isActive {
+        background-color: darken(@disabledColor, 5%);
+        color: white;
+    }
+}
+
+.previous,
+.next,
+.page {
+    composes: button;
+}
+
+.chevron {
+    width: 1em;
+    height: 1em;
+    fill: none;
+    stroke: currentColor;
+
+    &:hover {
+
+    }
+}

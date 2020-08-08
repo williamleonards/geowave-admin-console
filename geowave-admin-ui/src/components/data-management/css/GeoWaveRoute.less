@@ -1,0 +1,108 @@
+@import "../../../styles/constants";
+
+@titleColor: @THEME_PRIMARY_DARK;
+@borderColor: #eee;
+
+.root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: @NAV_WIDTH;
+    right: 0;
+    bottom: 0;
+    padding: @SPACING;
+    overflow-y: scroll;
+}
+
+.header,
+.messages,
+.panels,
+.footer {
+    max-width: 800px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 200;
+    color: @titleColor;
+    cursor: default;
+    margin: @SPACING
+}
+
+.storeButton {
+    margin: 0;
+    height: 40px;
+    width: 150px;
+    font-size: 1.2em;
+}
+
+.messages {
+}
+
+.message {
+    padding: @SPACING;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: @BORDER_RADIUS;
+    border-left: 3px solid @COLOR_BLUE;
+    box-shadow: @SHADOW;
+    background-color: lighten(@COLOR_BLUE, 15%);
+    color: darken(@COLOR_BLUE, 25%);
+    cursor: default;
+
+    &.isError {
+        padding: @SPACING;
+        border-radius: @BORDER_RADIUS;
+        border-left: 3px solid @COLOR_RED;
+        box-shadow: @SHADOW;
+        background-color: lighten(@COLOR_RED, 15%);
+        color: white;
+    }
+
+    & + & {
+        margin-top: @SPACING;
+    }
+
+    code {
+        font-weight: bold;
+    }
+}
+
+.messageText {
+    margin-left: .5em;
+}
+
+.sources {
+    margin-top: @SPACING;
+}
+
+.destination {
+    margin-top: @SPACING;
+}
+
+.footer {
+    margin-top: @SPACING;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.listItem {
+    border-top: 1px solid @borderColor;
+
+}

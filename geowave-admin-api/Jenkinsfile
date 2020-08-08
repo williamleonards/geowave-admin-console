@@ -1,0 +1,41 @@
+CONTAINER_NAME = 'gwa-api'
+IMAGE_TAG      = "geowave-admin-api:${BUILD_NUMBER}"
+NETWORK_NAME   = 'geowave-admin'
+
+node {
+    ansiColor {
+
+        stage('Initialize') {
+            deleteDir()
+            checkout scm
+        }
+
+        stage('Test') {
+            sh """
+                docker build -t '$IMAGE_TAG' --target base .
+                docker run --rm '$IMAGE_TAG' mvn -B clean test
+            """
+        }
+
+        stage('Build') {
+            sh "docker build -t '$IMAGE_TAG' ."
+        }
+
+        stage('Deploy') {
+            sh """
+                docker rm -f '$CONTAINER_NAME' 2>/dev/null || true
+                docker run \
+                    -d \
+                    --network '$NETWORK_NAME' \
+                    --name '$CONTAINER_NAME' \
+                    --restart always \
+                    -e server.port=80 \
+                    -e geowave.componentsFile=/runtime/componentsfile.properties \
+                    -e geowave.restservicesUri=http://sidecar-restservices:8080 \
+                    '$IMAGE_TAG'
+            """
+        }
+
+    }
+}
+

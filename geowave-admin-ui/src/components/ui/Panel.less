@@ -1,0 +1,40 @@
+@import "../../styles/constants";
+
+@headerBackgroundColor: mix(@THEME_PRIMARY_DARK, white, 50%);
+@footerBackgroundColor: #eee;
+
+.root {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: @SHADOW;
+    border-radius: @BORDER_RADIUS;
+    background-color: white;
+    font-size: 14px;
+}
+
+.header {
+    border-radius: @BORDER_RADIUS @BORDER_RADIUS 0 0;
+    padding: @SPACING;
+    background-color: @headerBackgroundColor;
+    color: white;
+    cursor: default;
+}
+
+.title {
+    text-shadow: 1px 1px fade(black, 5%);
+}
+
+.subtitle {
+    opacity: .5;
+}
+
+.body {
+    padding: @SPACING;
+}
+
+.footer {
+    padding: @SPACING;
+    background-color: @footerBackgroundColor;
+    cursor: default;
+}

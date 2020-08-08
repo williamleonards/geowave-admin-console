@@ -1,0 +1,72 @@
+@import "../../styles/constants";
+
+@checkedColor: @COLOR_BLUE;
+@disabledColor: darken(@COLOR_SILVER, 5%);
+@uncheckedColor: darken(@COLOR_SILVER, 10%);
+@indeterminateColor: @COLOR_SILVER;
+@shadow: @SHADOW;
+@borderRadius: @BORDER_RADIUS;
+
+.root {
+    display: inline-block;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    border: .1em solid @uncheckedColor;
+    border-radius: @borderRadius;
+    background: white;
+    box-shadow: @shadow;
+    cursor: pointer;
+    outline: none;
+
+    &.isChecked {
+        background-color: @checkedColor;
+        border-color: @checkedColor;
+    }
+
+    &.isIndeterminate {
+        background-color: @indeterminateColor;
+    }
+
+    &.isDisabled {
+        background-color: @disabledColor;
+        border-color: @disabledColor;
+        cursor: not-allowed;
+    }
+
+    &:focus {
+        box-shadow: @shadow, 0 0 0 3px fade(@checkedColor, 20%);
+    }
+
+    &.isDisabled:focus {
+        box-shadow: @shadow, 0 0 0 3px fade(@disabledColor, 20%);
+    }
+
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    input {
+        display: none;
+    }
+}
+
+.check {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 3;
+
+    .isDisabled & {
+        stroke: darken(@disabledColor, 35%);
+    }
+}
+
+.dash {
+    fill: fade(black, 40%);
+    stroke-width: 0;
+}

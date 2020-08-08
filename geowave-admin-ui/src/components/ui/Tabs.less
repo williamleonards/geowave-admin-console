@@ -1,0 +1,49 @@
+@import "../../styles/constants";
+
+@activeColor: @COLOR_BLUE;
+@inactiveColor: darken(@COLOR_SILVER, 25%);
+@hoverColor: @COLOR_GREY;
+@trackColor: @COLOR_SILVER;
+
+/* =========================================================================
+   Tabs
+   ========================================================================= */
+
+.tabs {
+    background-color: #fff;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    box-shadow: inset 0 -1px @trackColor;
+}
+
+.content {
+    padding: 1em;
+}
+
+/* =========================================================================
+   Tab
+   ========================================================================= */
+
+.tab {
+    padding: 0 2em;
+    line-height: 3em;
+    cursor: pointer;
+    color: @inactiveColor;
+    text-transform: uppercase;
+    font-size: 13px;
+
+    &:hover {
+        color: @hoverColor;
+    }
+
+    &.isActive {
+        color: @activeColor;
+        font-weight: bold;
+        box-shadow: inset 0 -2px currentColor;
+    }
+}
+

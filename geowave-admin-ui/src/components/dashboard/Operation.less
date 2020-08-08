@@ -1,0 +1,71 @@
+@import "../../styles/constants";
+
+@borderColor: @COLOR_SILVER;
+@statusPendingColor: lighten(@COLOR_GREY, 20%);
+@statusRunningColor: @COLOR_YELLOW;
+@statusErrorColor: @COLOR_RED;
+@statusSuccessColor: @COLOR_GREEN;
+@statusUnknownColor: magenta;
+
+.root {
+    padding: @SPACING;
+
+    & + & {
+        border-top: 1px solid @borderColor;
+    }
+}
+
+.identifier {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: bold;
+}
+
+.status {
+    margin-top: .25em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.statusOrb {
+    width: .75em;
+    height: .75em;
+    background-color: @statusUnknownColor;
+    border-radius: 50%;
+
+    .root.pending & {
+        background-color: @statusPendingColor;
+        animation: orb-blink alternate infinite 1s linear;
+    }
+
+    .root.running & {
+        background-color: @statusRunningColor;
+        animation: orb-blink alternate infinite 1s linear;
+    }
+
+    .root.error & {
+        background-color: @statusErrorColor;
+    }
+
+    .root.success & {
+        background-color: @statusSuccessColor;
+    }
+
+    @keyframes orb-blink {
+        from {
+            opacity: .2;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+.statusText {
+    flex: 1;
+    margin-left: .5em;
+    text-transform: capitalize;
+}

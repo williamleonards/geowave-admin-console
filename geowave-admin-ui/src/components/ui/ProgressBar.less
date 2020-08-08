@@ -1,0 +1,55 @@
+@import "../../styles/constants";
+
+@puckColor: lighten(@COLOR_BLUE, 15%);
+@stripeColor: lighten(@puckColor, 5%);
+@trackColor: @COLOR_SILVER;
+
+.root {
+    display: flex;
+    position: relative;
+    min-height: 3px;
+    width: 100%;
+    overflow: hidden;
+    background-color: @trackColor;
+    text-align: center;
+    cursor: default;
+}
+
+.puck {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background-color: @puckColor;
+    z-index: 1;
+    transition: width 1s linear;
+
+    .isIndeterminate & {
+        transition: none;
+        width: 200% !important;
+        background-image: repeating-linear-gradient(
+            45deg,
+            @puckColor,
+            @puckColor 10px,
+            @stripeColor 10px,
+            @stripeColor 20px);
+        animation: marquee infinite 10s linear;
+    }
+}
+
+.content {
+    position: relative;
+    padding: .25em 1em;
+    flex: 1;
+    z-index: 2;
+}
+
+@keyframes marquee {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 0;
+    }
+}

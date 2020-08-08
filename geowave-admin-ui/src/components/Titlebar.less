@@ -1,0 +1,66 @@
+@import "../styles/constants";
+
+@backgroundColor: @THEME_PRIMARY_DARK;
+@logoutColor: @THEME_PRIMARY_MEDIUM;
+@logoutHoverColor: lighten(@backgroundColor, 10%);
+@shadow: @SHADOW;
+@zIndex: @TITLEBAR_Z_INDEX;
+
+.root {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: @backgroundColor;
+    box-shadow: @shadow;
+    color: white;
+    cursor: default;
+    z-index: @zIndex;
+    font-size: 16px;
+}
+
+.brand {
+    padding: 0 @SPACING;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 30px;
+}
+
+.brandLabel {
+    margin-left: .2em;
+    font-weight: 200;
+    text-shadow: 1px 1px fade(black, 6%);
+}
+
+.column {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.username,
+.login,
+.logout {
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.login,
+.logout {
+    margin-left: 5px;
+    padding: 0 @SPACING;
+    color: @logoutColor;
+    text-decoration: none;
+    transition: .1s ease;
+    transition-property: background-color, color;
+
+    &:hover {
+        background-color: @logoutHoverColor;
+        color: white;
+    }
+}

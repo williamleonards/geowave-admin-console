@@ -1,0 +1,105 @@
+@import "../styles/constants";
+
+.root {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    flex-direction: column;
+    cursor: default;
+    transition: min-height ease .5s;
+    min-height: 0;
+
+    &.isLoading {
+        min-height: 75px;
+    }
+}
+
+.chooser {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity ease .5s;
+
+    * + & {
+        margin-top: @SPACING;
+    }
+
+    .isLoading & {
+        opacity: 0;
+    }
+}
+
+.chooserHiddenField {
+    overflow: hidden;
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.label {
+    flex: 1;
+    padding: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .hasError & {
+        background-color: lighten(@COLOR_RED, 40%);
+        border-radius: @BORDER_RADIUS;
+        color: @COLOR_RED;
+    }
+
+    .chooser & {
+        opacity: .4;
+    }
+}
+
+.file {
+    display: flex;
+
+    & + & {
+        margin-top: @SPACING / 2;
+    }
+
+    &.isQueued {
+        color: #888;
+    }
+}
+
+.fileicon {
+    margin-right: .3em;
+    line-height: 1em;
+    opacity: .3;
+}
+
+.filename {
+    flex: 1;
+    line-height: 1em;
+    text-align: left;
+    word-break: break-word;
+}
+
+.filesize {
+    margin-left: 1em;
+    line-height: 1em;
+    opacity: .3;
+}
+
+.errorMessage {
+    flex: 1;
+    text-align: left;
+    margin-left: .3em;
+    word-break: break-word;
+}
+
+.button {
+    margin: 0;
+    margin-left: 5px;
+}
+
+.loadingMask {
+    font-size: 24px;
+}

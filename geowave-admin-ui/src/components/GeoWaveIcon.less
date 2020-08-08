@@ -1,0 +1,45 @@
+.root {
+    width: 1em;
+    height: 1em;
+}
+
+.orange {
+    fill: #E36836;
+
+    .isFlat & {
+        fill: currentColor;
+    }
+
+    &.shadow {
+        fill: #C9482D;
+    }
+}
+
+.blue {
+    fill: #3594C5;
+
+    .isFlat & {
+        fill: currentColor;
+    }
+
+    &.shadow {
+        fill: #10669A;
+    }
+}
+
+.green {
+    fill: #80AC42;
+
+    .isFlat & {
+        fill: currentColor;
+    }
+
+    &.shadow {
+        fill: #6C9341;
+    }
+}
+
+.isFlat .shadow {
+    fill: transparent;
+    stroke: transparent;
+}

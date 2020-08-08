@@ -1,0 +1,15 @@
+# IDE Stuff
+.idea
+*.iml
+
+# Build Artifacts
+target
+
+# Runtime artifacts
+tmp
+
+# Project Settings
+.classpath
+.project
+.settings
+bin

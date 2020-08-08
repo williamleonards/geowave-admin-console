@@ -1,0 +1,45 @@
+@import "../../styles/constants";
+
+@backgroundColor: lighten(@COLOR_SILVER, 5%);
+@borderColor:     darken(@COLOR_SILVER, 10%);
+@activeColor:     @COLOR_BLUE;
+@disabledColor:   darken(@COLOR_SILVER, 10%);
+@textColor:       black;
+
+.root {
+    display: inline-block;
+    margin: 0;
+    width: 16em;
+    padding: .75em;
+    border: 1px solid @borderColor;
+    border-radius: @BORDER_RADIUS;
+    font-family: @FONT_INPUT;
+    font-size: 1em;
+    outline: none;
+    color: @textColor;
+    transition: ease .2s;
+    transition-property: background-color, box-shadow, border-color, color;
+    background-color: @backgroundColor;
+
+    &:focus {
+        background-color: white;
+        border-color: @activeColor;
+        box-shadow: 0 0 0 3px fade(@activeColor, 15%);
+    }
+
+    &:disabled {
+        border-color: @disabledColor;
+        background-color: lighten(@disabledColor, 3%);
+        color: fade(@textColor, 60%);
+        -webkit-text-fill-color: currentColor;
+    }
+
+    &::placeholder {
+        color: fade(@textColor, 30%);
+        -webkit-text-fill-color: currentColor;
+    }
+
+    &:disabled:focus {
+        box-shadow: 0 0 0 3px fade(@disabledColor, 15%);
+    }
+}

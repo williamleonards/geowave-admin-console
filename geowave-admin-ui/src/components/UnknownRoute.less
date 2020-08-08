@@ -1,0 +1,31 @@
+@import "../styles/constants";
+
+@headingColor: @THEME_PRIMARY_DARK;
+
+.root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.content {
+    padding: @SPACING;
+    position: absolute;
+    top: 0;
+    left: @NAV_WIDTH;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+}
+
+.heading {
+    font-weight: 200;
+    font-size: 24px;
+    color: @headingColor;
+}
+
+.icon {
+    margin-right: .25em;
+}

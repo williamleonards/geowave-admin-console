@@ -1,0 +1,36 @@
+@import "../../../styles/constants";
+
+.root {
+    position: relative;
+    max-width: 800px;
+    transition: min-height ease .5s;
+    min-height: 0;
+
+    &.isLoading {
+        min-height: 200px;
+    }
+}
+
+.rows {
+    width: 400px;
+
+    .isLoading & {
+        display: none;
+    }
+}
+
+.row {}
+
+.rowLabelText {
+    align-self: flex-start;
+}
+
+.loadingMask {
+    font-size: 24px;
+}
+
+.indexLabel {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: flex-end;
+}

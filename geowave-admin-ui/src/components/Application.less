@@ -1,0 +1,28 @@
+@import "../styles/constants.less";
+
+@backgroundColor: desaturate(lighten(@THEME_PRIMARY_DARK, 60%), 70%);
+
+.root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: @backgroundColor;
+}
+
+.titlebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: @TITLEBAR_HEIGHT;
+}
+
+.content {
+    position: absolute;
+    top: @TITLEBAR_HEIGHT;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}

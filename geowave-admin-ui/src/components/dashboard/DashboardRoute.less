@@ -1,0 +1,86 @@
+@import "../../styles/constants";
+
+@panelsMaxWidth: 1000px;
+@breakWidth: calc(@panelsMaxWidth + @NAV_WIDTH);
+@titleColor: @THEME_PRIMARY_DARK;
+@cardTitleBackgroundColor: mix(@THEME_PRIMARY_DARK, white, 50%);
+@cardShadow: @SHADOW;
+@cardBorderRadius: @BORDER_RADIUS;
+
+.root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 200;
+    color: @titleColor;
+    cursor: default;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: @NAV_WIDTH;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    padding: @SPACING;
+}
+
+.panels {
+    margin-top: @SPACING;
+    max-width: @panelsMaxWidth;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.panel {
+    flex: 1;
+
+    & + & {
+        margin-left: @SPACING;
+    }
+
+    @media (max-width: @breakWidth) {
+        flex-basis: @breakWidth;
+
+        & + & {
+            margin-left: 0;
+            margin-top: @SPACING;
+        }
+    }
+}
+
+.metric {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    line-height: 16px;
+
+    .cardTitle + & {
+        margin-top: @SPACING;
+    }
+}
+
+.metricName {
+    flex: 1;
+    text-align: right;
+    font-weight: bold;
+}
+
+.metricValue {
+    flex: 1;
+    margin-left: .5em;
+    font-family: @FONT_MONOSPACE;
+}
+
+.operationsBody {
+    padding: 0;
+}

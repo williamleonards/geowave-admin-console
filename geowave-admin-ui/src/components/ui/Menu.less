@@ -1,0 +1,110 @@
+@import "../../styles/constants";
+
+@disabledColor: lighten(@COLOR_GREY, 25%);
+@selectedBackgroundColor: @COLOR_BLUE;
+@hoverBackgroundColor: lighten(@COLOR_BLUE, 40%);
+@hoverTextColor: darken(@COLOR_BLUE, 15%);
+@selectedTextColor: white;
+@itemPadding: .5em 1em;
+@dividerColor: @COLOR_SILVER;
+@shadow: @SHADOW;
+
+/* =========================================================================
+   Menu
+   ========================================================================= */
+
+.menu {
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+    background-color: white;
+    box-shadow: @shadow, 0 0 0 1px @dividerColor;
+}
+
+/* =========================================================================
+   Divider
+   ========================================================================= */
+
+.divider {
+    height: 1px;
+    background-color: @dividerColor;
+    cursor: default;
+}
+
+/* =========================================================================
+   Header
+   ========================================================================= */
+
+.header {
+    font-weight: bold;
+    padding: @itemPadding;
+    cursor: default;
+}
+
+/* =========================================================================
+   Item
+   ========================================================================= */
+
+.item {
+    position: relative;
+    padding: @itemPadding;
+    display: flex;
+    flex-direction: row;
+    color: black;
+    cursor: pointer;
+    align-items: center;
+
+    &:hover {
+        background-color: @hoverBackgroundColor;
+        color: @hoverTextColor;
+    }
+
+    &.isSelected {
+        background-color: @selectedBackgroundColor;
+        color: @selectedTextColor;
+        font-weight: bold;
+    }
+
+    &.isDisabled {
+        background-color: transparent;
+        color: @disabledColor;
+        cursor: default;
+    }
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    margin-right: .25em;
+
+    .isOpen > & {
+        opacity: .7;
+    }
+}
+
+.label {
+    .isOpen > & {
+        opacity: .7;
+    }
+}
+
+.caret {
+    margin-left: auto;
+    margin-right: -.75em;
+    height: .8em;
+    fill: #888;
+
+    .item:hover > & {
+        fill: @hoverTextColor;
+    }
+}
+
+.submenu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+}

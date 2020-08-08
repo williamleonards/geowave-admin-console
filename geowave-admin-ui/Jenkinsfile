@@ -1,0 +1,38 @@
+CONTAINER_NAME = 'gwa-ui'
+IMAGE_TAG      = "geowave-admin-ui:${BUILD_NUMBER}"
+NETWORK_NAME   = 'geowave-admin'
+
+node {
+    ansiColor {
+
+        stage('Initialize') {
+            deleteDir()
+            checkout scm
+        }
+
+        stage('Test') {
+            sh """
+                docker build -t '$IMAGE_TAG' --target base .
+                docker run --rm '$IMAGE_TAG' ./scripts/test.sh
+            """
+        }
+
+        stage('Build') {
+            sh "docker build -t '$IMAGE_TAG' ."
+        }
+
+        stage('Deploy') {
+            sh """
+                docker rm -f '$CONTAINER_NAME' 2>/dev/null || true
+                docker run \
+                    -d \
+                    --network '$NETWORK_NAME' \
+                    --name '$CONTAINER_NAME' \
+                    --restart always \
+                    -p 80:80 \
+                    '$IMAGE_TAG'
+            """
+        }
+
+    }
+}

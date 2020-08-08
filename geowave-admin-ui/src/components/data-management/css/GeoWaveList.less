@@ -1,0 +1,80 @@
+@import "../../../styles/constants";
+
+@borderColor: #eee;
+
+.root {
+}
+
+.panelBody {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.list {
+    padding: @SPACING;
+    display: flex;
+    flex-direction: column;
+
+    & + & {
+        margin-top: @SPACING;
+        padding-top: @SPACING * 2;
+        border-top: 1px solid @borderColor;
+    }
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.column {
+    flex: 1;
+
+    & + & {
+        margin-left: @SPACING;
+    }
+}
+
+.label {
+    flex: 0 1 200px;
+    font-weight: bold;
+}
+
+.details {
+    display: none;
+    flex-direction: column;
+
+    .isActive & {
+        display: flex;
+    }
+}
+
+.uri {
+    min-width: 30em;
+    font-family: @FONT_MONOSPACE;
+}
+
+.button {
+    margin-left: 2em;
+
+     &.text {
+        min-width: 6em;
+    }
+}
+
+.instructions {
+    margin: .5em 0;
+    font-style: italic;
+    color: @COLOR_GREY;
+}
+
+.fileUpload + .fileUpload {
+    margin-top: @SPACING;
+}
+
+.dataStoreItem {
+    :hover {
+        cursor: pointer;
+    }
+}

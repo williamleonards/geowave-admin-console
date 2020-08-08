@@ -1,0 +1,13 @@
+# IDE/OS artifacts
+.idea
+*.iml
+.DS_Store
+
+# Development artifacts
+node_modules
+npm-debug.log
+yarn-error.log
+
+
+# Build artifacts
+dist
